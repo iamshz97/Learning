@@ -18,22 +18,21 @@
       <li class="nav-item">
         <a class="nav-link" (click)="logout()" href="#">Logout</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" dropdownToggle>
           Welcome User
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
           <a class="dropdown-item" href="#">Edit Profile</a>
-          <a class="dropdown-item" href="#">Logout</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" (click)="logout()" href="#">Logout</a>
         </div>
       </li>
     </ul>
     <form #loginForm="ngForm" *ngIf="!loggedIn" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" autocomplete="off">
       <input name="username" [(ngModel)]="model.username" type="text" class="form-control mr-sm-2" placeholder="Username">
       <input name="password" [(ngModel)]="model.password" type="text" class="form-control mr-sm-2" placeholder="Password">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
     </form>
   </div>
 </nav>
