@@ -5,7 +5,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto" *ngIf="loggedIn">
+    <ul class="navbar-nav mr-auto" *ngIf="accountService.currentAppUser$ | async">
       <li class="nav-item">
         <a class="nav-link" href="#">Matches</a>
       </li>
@@ -29,7 +29,7 @@
         </div>
       </li>
     </ul>
-    <form #loginForm="ngForm" *ngIf="!loggedIn" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" autocomplete="off">
+    <form #loginForm="ngForm" *ngIf="(!accountService.currentAppUser$ | async) === null" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" autocomplete="off">
       <input name="username" [(ngModel)]="model.username" type="text" class="form-control mr-sm-2" placeholder="Username">
       <input name="password" [(ngModel)]="model.password" type="text" class="form-control mr-sm-2" placeholder="Password">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
